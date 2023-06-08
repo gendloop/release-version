@@ -2,10 +2,7 @@ name: release-version
 author: gendloop
 description: 'release-version'
 inputs:
-  repo:
-    description: 'Repository name with owner. e.g. gendloop/release-version'
-    required: true
-    default: ${{ github.repository }}
+# Required
   version:
     description: 'New version. e.g. v0.0.0'
     required: true
@@ -14,6 +11,7 @@ inputs:
     description: 'Personal token'
     required: true
     default: ${{ github.token }}
+# Optional
   user:
     description: 'User'
     required: false
@@ -33,7 +31,6 @@ runs:
     - name: checkout-repo
       uses: actions/checkout@v3
       with: 
-        repository: ${{ inputs.repo }}
         token: ${{ inputs.token }}
         fetch-depth: 0
 
