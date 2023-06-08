@@ -22,6 +22,10 @@ inputs:
     description: 'Email'
     required: false
     default: 'gendloop@163.com'
+  branch:
+    description: 'branch'
+    required: false
+    default: main
 
 runs:
   using: 'composite'
@@ -46,4 +50,30 @@ runs:
 
     - name: cmd
       shell: bash
-      run: echo ${{ github.workspace }}
+      working-directory: ${{ github.workspace }}
+      env:
+          GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        git config user.name ${{ inputs.user }}
+        git config user.email ${{ inputs.email }}
+        git checkout ${{ inputs.branch }}
+        git pull
+        repo_name=${GITHUB_REPOSITORY#*/}
+        version=${{ inputs.version }}
+        echo $repo_name
+        echo $version
+        if [[ ${version} =~ ^v(.*)\.(.*)\.(.*) ]] 
+        then
+          major=${BASH_REMATCH[1]}
+          minor=${BASH_REMATCH[2]}
+          patch=${BASH_REMATCH[3]}
+        fi
+        echo $major $minor $patch
+        echo "" > config.txt
+        echo "PROJECT_NAME=${repo_name}" >> config.txt
+        echo "${repo_name}_VERSION_MAJOR=${major}" >> config.txt
+        echo "${repo_name}_VERSION_MINOR=${minor}" >> config.txt
+        echo "${repo_name}_VERSION_PATCH=${patch}" >> config.txt
+        git add .
+        (git commit -m "chore: release VERSION ${{ inputs.version }} ") || true
+        (git push) || true
