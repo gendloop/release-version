@@ -45,4 +45,5 @@ runs:
         GITHUB_TOKEN: ${{ inputs.token }}
 
     - name: cmd
+      shell: bash
       run: echo ${{ github.workspace }}
