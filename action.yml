@@ -2,17 +2,47 @@ name: release-version
 author: gendloop
 description: 'release-version'
 inputs:
-  version:
-    description: 'New Version'
+  repo:
+    description: 'Repository name with owner. e.g. gendloop/release-version'
     required: true
-    default: '0.0.0'
+    default: ${{ github.repository }}
+  version:
+    description: 'New version. e.g. v0.0.0'
+    required: true
+    default: 'v0.0.0'
+  token:
+    description: 'Personal token'
+    required: true
+    default: ${{ github.token }}
+  user:
+    description: 'User'
+    required: false
+    default: 'gendloop'
+  email:
+    description: 'Email'
+    required: false
+    default: 'gendloop@163.com'
 
 runs:
   using: 'composite'
   steps:
-    - name: test
+    - name: checkout-repo
+      uses: actions/checkout@v3
+      with: 
+        repository: ${{ inputs.repo }}
+        token: ${{ inputs.token }}
+        fetch-depth: 0
+
+    - name: setup-node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+      
+    - name: add-release-log
       shell: bash
-      run: |
-        echo ${{ github.action_path }}
-        echo ${{ github.action_repository }}
-        echo ${{ github.repository }}
+      run: npx changelogithub
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+
+    - name: cmd
+      run: echo ${{ github.workspace }}

@@ -16,7 +16,10 @@ jobs:
       - name: releaes-version
         uses: gendloop/release-version@main
         with:
+          repo: ${{ github.repository }}
           version: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
           
       
         
