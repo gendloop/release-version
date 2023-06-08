@@ -13,7 +13,7 @@ jobs:
   release_version:
     runs-on: windows-latest
     steps:
-      uses: gendloop/release-version@v1.0.0
+      uses: gendloop/release-version@main
       with:
         version: ${{ github.ref_name }}
           
