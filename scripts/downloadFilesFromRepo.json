@@ -1,0 +1,30 @@
+{
+    "datas":[
+        {
+            "files": [
+                "Git/Git_Push.bat",
+                "Git/Git_PushDirectly.bat",
+                "Git/Git_Tag.bat",
+                "Git/Git_Delete_Tag.bat"
+            ],
+            "local_dir": ".",
+            "user": "gendloop",
+            "repo": "Tools",
+            "branch": "main",
+            "is_private": true,
+            "token": ""
+        },
+        {
+            "files": [
+                "GitHubActions/Call_Release_Version_With_Commits.yml"
+            ],
+            "local_dir": "../.github/workflows",
+            "user": "gendloop",
+            "repo": "Tools",
+            "branch": "main",
+            "is_private": true,
+            "token": ""
+        }
+    ]
+    
+}
