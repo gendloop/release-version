@@ -8,14 +8,6 @@
 #     required: true
 #     default: ${{ github.token }}
 # # Optional
-#   user:
-#     description: 'User'
-#     required: false
-#     default: 'gendloop'
-#   email:
-#     description: 'Email'
-#     required: false
-#     default: 'gendloop@163.com'
 #   branch:
 #     description: 'branch'
 #     required: false
