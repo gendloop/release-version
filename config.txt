@@ -2,4 +2,4 @@
 PROJECT_NAME=release-version
 release-version_VERSION_MAJOR=1
 release-version_VERSION_MINOR=0
-release-version_VERSION_PATCH=4
+release-version_VERSION_PATCH=5
