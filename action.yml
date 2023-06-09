@@ -12,14 +12,6 @@ inputs:
     required: true
     default: ${{ github.token }}
 # Optional
-  user:
-    description: 'User'
-    required: false
-    default: 'gendloop'
-  email:
-    description: 'Email'
-    required: false
-    default: 'gendloop@163.com'
   branch:
     description: 'branch'
     required: false
@@ -51,8 +43,8 @@ runs:
       env:
           GITHUB_TOKEN: ${{ inputs.token }}
       run: |
-        git config user.name ${{ inputs.user }}
-        git config user.email ${{ inputs.email }}
+        git config --global user.name "$GITHUB_ACTOR"
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
         git checkout ${{ inputs.branch }}
         git pull
         repo_name=${GITHUB_REPOSITORY#*/}
