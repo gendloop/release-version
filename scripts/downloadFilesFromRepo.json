@@ -16,13 +16,13 @@
         },
         {
             "files": [
-                "GitHubActions/Call_Release_Version_With_Commits.yml"
+                ".github/workflows/Release_Version.yml"
             ],
             "local_dir": "../.github/workflows",
             "user": "gendloop",
-            "repo": "Tools",
+            "repo": "release-version",
             "branch": "main",
-            "is_private": true,
+            "is_private": false,
             "token": ""
         }
     ]
