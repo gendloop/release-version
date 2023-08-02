@@ -26,17 +26,6 @@ runs:
         token: ${{ inputs.token }}
         fetch-depth: 0
 
-    - name: setup-node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-      
-    - name: add-release-log
-      shell: bash
-      run: npx changelogithub
-      env:
-        GITHUB_TOKEN: ${{ inputs.token }}
-
     - name: cmd
       shell: bash
       working-directory: ${{ github.workspace }}
@@ -66,3 +55,14 @@ runs:
         git add .
         (git commit -m "chore: release VERSION ${{ inputs.version }} ") || true
         (git push) || true
+
+    - name: setup-node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+      
+    - name: add-release-log
+      shell: bash
+      run: npx changelogithub
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
