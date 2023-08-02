@@ -55,6 +55,7 @@ runs:
         git add .
         (git commit -m "chore: release VERSION ${{ inputs.version }} ") || true
         (git push) || true
+        git checkout -b temp
 
     - name: setup-node
       uses: actions/setup-node@v3
