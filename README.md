@@ -2,5 +2,4 @@
 
 ## Usage
 
-[Release_Version.yml](.github/workflows/Release_Version.yml) 
-
+[Release_Version.yml](.github/workflows/Release_Version.yml)

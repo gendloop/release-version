@@ -22,7 +22,7 @@ runs:
   steps:
     - name: checkout-repo
       uses: actions/checkout@v3
-      with: 
+      with:
         token: ${{ inputs.token }}
         fetch-depth: 0
 
@@ -40,7 +40,7 @@ runs:
         version=${{ inputs.version }}
         echo $repo_name
         echo $version
-        if [[ ${version} =~ ^v(.*)\.(.*)\.(.*) ]] 
+        if [[ ${version} =~ ^v(.*)\.(.*)\.(.*) ]]
         then
           major=${BASH_REMATCH[1]}
           minor=${BASH_REMATCH[2]}
@@ -61,7 +61,7 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
-      
+
     - name: add-release-log
       shell: bash
       run: npx changelogithub
