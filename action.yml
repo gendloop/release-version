@@ -16,6 +16,10 @@ inputs:
     description: 'branch'
     required: false
     default: main
+  no_commit:
+    description: 'whether to generate new commit'
+    required: false
+    default: false
 
 runs:
   using: 'composite'
@@ -27,6 +31,7 @@ runs:
         fetch-depth: 0
 
     - name: cmd
+      if: ${{ inputs.no_commit == 'false' }}
       shell: bash
       working-directory: ${{ github.workspace }}
       env:
