@@ -69,6 +69,6 @@ runs:
 
     - name: add-release-log
       shell: bash
-      run: npx changelogithub
+      run: npx changelogithub@0.13.9
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
